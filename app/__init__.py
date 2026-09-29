@@ -8,6 +8,7 @@ from flask import send_from_directory
 
 
 
+
 def create_app(config_name='development'):
     app = Flask(__name__)
     
@@ -59,9 +60,11 @@ def create_app(config_name='development'):
     from app.routes.forum_routes import forum_bp
     app.register_blueprint(forum_bp)
 
+  
+
     @app.route('/')
     def index():
-        return redirect(url_for('auth.login'))
+        return render_template('welcome.html')
         
     @app.route('/dashboard')
     @login_required
